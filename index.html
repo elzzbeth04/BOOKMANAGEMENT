@@ -1,0 +1,393 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOK MANAGEMENT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />">
+    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white py-4 fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex justify-content-between align-items-center order-lg-0" href="index.html">
+                <img class="rounded-full"
+                src="data:image/jpeg;base64,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" alt="site icon">
+                <span class="text-uppercase fw-lighter ms-2">PUBLIC LIBRARY</span>
+            </a>
+            <div class="order-lg-2 nav-btns">
+                <button type="button" class="btn position-relative">
+                    <i class="fa fa-shopping-cart"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge bg-primary">0</span>
+                </button>
+                <button type="button" class="btn position-relative">
+                    <i class="fa fa-heart"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge bg-primary">0</span>
+                </button>
+                <button type="button" class="btn position-relative">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+dd
+            <button class="navbar-toggler border-0" type="button"  data-bs-toggle="collapse" data-bs-target="#navMenu" >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse order-lg-1" id="navMenu">
+                <ul class="navbar-nav mx-auto text-center">
+                    <li class="nav-item px-2 py-2">
+                        <a class="nav-link text-uppercase text-dark" href="#header">HOME</a>
+                    </li>
+                    <li class="nav-item px-2 py-2">
+                        <a class="nav-link text-uppercase text-dark" href="#fic">FICTION</a>
+                    </li>
+                    <li class="nav-item px-2 py-2">
+                        <a class="nav-link text-uppercase text-dark" href="#th">THRILLER</a>
+                    </li>
+                    <li class="nav-item px-2 py-2">
+                        <a class="nav-link text-uppercase text-dark" href="#fan">FANTASY</a>
+                    </li>
+                    <li class="nav-item px-2 py-2">
+                        <a class="nav-link text-uppercase text-dark" href="#iform">RETURN</a>
+                    </li>
+                    <li class="nav-item px-2 py-2">
+                        <a class="nav-link text-uppercase text-dark" href="#about">About Us</a>
+                    </li>
+                    
+                    
+                    <li class="nav-item px-2 py-2">
+                        <a class="nav-link text-uppercase text-dark" href="#">
+                            <button type="button" class="btn bg-blue-500  px-4 py-1 rounded-full "><b>Login</b></button>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </div>
+               
+            
+        </div>
+    </nav>
+    <header id="header" class="vh-100 carousel slide" data-bs-ride="carousel" style="padding-top: 104px;">
+        <div class="container h-100 d-flex align-items-center carousel-inner ">
+            <div class="text-center carousel-item active">
+                <h2 class="text-capitalize text-white"></h2>
+                <h1 class="text-uppercase py-2 fw-bold text-white">new arrivals</h1>
+                <a href="#" class="btn mt-3 text-uppercase">INKED INDIA</a>
+            </div>
+            <div class="text-center carousel-item">
+                <h2 class="text-capitalize text-white"></h2>
+                <h1 class="text-uppercase py-2 fw-bold text-white">new arrivals</h1>
+                <a href="#" class="btn mt-3 text-uppercase W-10">DUNES</a>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#header" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#header" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>    
+    </header>
+    
+            </div>
+           
+            
+            
+        
+    <section id="BOOKS" class="py-5">
+        <div class="container"id="fic">
+            <div class="title text-center py-5">
+                <h2 class="position-relative d-inline-block">FICTION</h2>
+            </div>
+            <div class="special-list row g-0">
+                <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                    <div class="special-img position-relative overflow-hidden w-100 h-50">
+                        <img src="https://rukminim2.flixcart.com/image/416/416/xif0q/regionalbooks/u/a/j/to-kill-a-mockingbird-book-original-imagyf9vuhjv4nwg.jpeg?q=70" class="w-100 h-100" alt="To Kill a Mockingbird">
+                        <span class="position-absolute d-flex align-items-center justify-content-center text-primary fs-4"></span>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-capitalize mt-3 mb-1">To Kill a Mockingbird</p>
+                        <span class="fw-bold d-block">by Harper Lee</span>
+                        <a href="#" class="btn btn-primary mt-3">Add to cart</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                    <div class="special-img position-relative overflow-hidden w-100 h-50">
+                        <img src="https://m.media-amazon.com/images/I/81kElPFJD9L._SY466_.jpg" class="w-100 h-100" alt="1984">
+                        <span class="position-absolute d-flex align-items-center justify-content-center text-primary fs-4"></span>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-capitalize mt-3 mb-1">1984</p>
+                        <span class="fw-bold d-block">by George Orwell</span>
+                        <a href="#" class="btn btn-primary mt-3">Add to cart</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                    <div class="special-img position-relative overflow-hidden w-100 h-50">
+                        <img src="https://m.media-amazon.com/images/I/71GrZ8ZRn7L._SL1280_.jpg" class="w-100 h-100" alt="The Great Gatsby">
+                        <span class="position-absolute d-flex align-items-center justify-content-center text-primary fs-4"></span>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-capitalize mt-3 mb-1">The Great Gatsby</p>
+                        <span class="fw-bold d-block">F. Scott Fitzgerald</span>
+                        <a href="#" class="btn btn-primary mt-3">Add to cart</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                    <div class="special-img position-relative overflow-hidden w-100 h-50">
+                        <img src="https://rukminim2.flixcart.com/image/416/416/xif0q/regionalbooks/1/g/g/catcher-in-the-rye-book-original-imaggha7nmbdjvnf.jpeg?q=70" class="w-100 h-100" alt="The Catcher in the Rye">
+                        <span class="position-absolute d-flex align-items-center justify-content-center text-primary fs-4"></span>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-capitalize mt-3 mb-1">The Catcher in the Rye</p>
+                        <span class="fw-bold d-block">by J.D. Salinger</span>
+                        <a href="#" class="btn btn-primary mt-3">Add to cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" id="th">
+            <div class="title text-center py-5">
+                <h2 class="position-relative d-inline-block">THRILLER</h2>
+            </div>
+            <div class="special-list row g-0">
+                <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                    <div class="special-img position-relative overflow-hidden w-100 h-50">
+                        <img src="https://m.media-amazon.com/images/I/41wjnFxdxnL.jpg">
+                        <span class="position-absolute d-flex align-items-center justify-content-center text-primary fs-4"></span>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-capitalize mt-3 mb-1">Gone Girl</p>
+                        <span class="fw-bold d-block"> by Gillian Flynn</span>
+                        <a href="#" class="btn btn-primary mt-3">Add to cart</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                    <div class="special-img position-relative overflow-hidden w-100 h-50">
+                        <img src="https://rukminim2.flixcart.com/image/850/1000/jp2xoy80/book/0/1/7/the-da-vinci-code-original-imafbeey5dyjxu5h.jpeg?q=20" class="w-100 h-100" alt="1984">
+                        <span class="position-absolute d-flex align-items-center justify-content-center text-primary fs-4"></span>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-capitalize mt-3 mb-1">The Da Vinci Code</p>
+                        <span class="fw-bold d-block">by Dan Brown</span>
+                        <a href="#" class="btn btn-primary mt-3">Add to cart</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                    <div class="special-img position-relative overflow-hidden w-100 h-50">
+                        <img src="https://m.media-amazon.com/images/I/81Tocn2mjxL._AC_UF1000,1000_QL80_.jpg" class="w-100 h-100" alt="The Great Gatsby">
+                        <span class="position-absolute d-flex align-items-center justify-content-center text-primary fs-4"></span>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-capitalize mt-3 mb-1">Big Little Lies</p>
+                        <span class="fw-bold d-block">by Liane Moriarty</span>
+                        <a href="#" class="btn btn-primary mt-3">Add to cart</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                    <div class="special-img position-relative overflow-hidden w-100 h-50">
+                        <img src="https://rukminim2.flixcart.com/image/850/1000/k5zn9u80/book/6/1/3/the-silent-patient-original-imafgsy68ph6yggr.jpeg?q=20" class="w-100 h-100" alt="The Catcher in the Rye">
+                        <span class="position-absolute d-flex align-items-center justify-content-center text-primary fs-4"></span>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-capitalize mt-3 mb-1">The Silent Patient</p>
+                        <span class="fw-bold d-block">by Alex Michaelides</span>
+                        <a href="#" class="btn btn-primary mt-3">Add to cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container"id="fan">
+            <div class="title text-center py-5">
+                <h2 class="position-relative d-inline-block">FANTASY</h2>
+            </div>
+            <div class="special-list row g-0">
+                <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                    <div class="special-img position-relative overflow-hidden w-100 h-50">
+                        <img src="data:image/jpeg;base64,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"
+                        class="w-100 h-100" alt="Dune">
+                        <span class="position-absolute d-flex align-items-center justify-content-center text-primary fs-4"></span>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-capitalize mt-3 mb-1">Dune</p>
+                        <span class="fw-bold d-block">  by Orson Scott Card</span>
+                        <a href="#" class="btn btn-primary mt-3">Add to cart</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                    <div class="special-img position-relative overflow-hidden w-100 h-50">
+                        <img src="https://m.media-amazon.com/images/I/71WSzS6zvCL._AC_UF1000,1000_QL80_.jpg" class="w-100 h-100" alt="The Hunger Games">
+                        <span class="position-absolute d-flex align-items-center justify-content-center text-primary fs-4"></span>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-capitalize mt-3 mb-1">The Hunger Games</p>
+                        <span class="fw-bold d-block">by Suzanne Collins</span>
+                        <a href="#" class="btn btn-primary mt-3">Add to cart</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                    <div class="special-img position-relative overflow-hidden w-100 h-50">
+                        <img src="https://jeroenthoughts.files.wordpress.com/2022/03/image011.jpg" class="w-100 h-100" alt="Neuromancer">
+                        <span class="position-absolute d-flex align-items-center justify-content-center text-primary fs-4"></span>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-capitalize mt-3 mb-1">Neuromancer</p>
+                        <span class="fw-bold d-block">by William Gibson</span>
+                        <a href="#" class="btn btn-primary mt-3">Add to cart</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-3 p-2">
+                    <div class="special-img position-relative overflow-hidden w-100 h-50">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/The_Martian_%28Weir_novel%29.jpg" class="w-100 h-100" alt="The Martian">
+                        <span class="position-absolute d-flex align-items-center justify-content-center text-primary fs-4"></span>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-capitalize mt-3 mb-1">The Martian </p>
+                        <span class="fw-bold d-block">by Andy Weir</span>
+                        <a href="#" class="btn btn-primary mt-3">Add to cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<div class="section" id="iform">
+    <div class="column right">
+    <div class="text"><B>RETURN BOOK</B></div>
+        <form action="#">
+            <div class="fields">
+                <div class="field name">
+                    <input type="text" placeholder="YOUR NAME " required>
+                </div>
+            <div class="field field-email">
+                    <input type="email" placeholder="EMAIL" required>
+            </div>
+            
+            <div class="field field-book">
+                <input type="text" placeholder="BOOK NAME" required>
+            </div>
+            <div class="field field-textarea">
+                <input type="text" placeholder="BOOK ID" required>
+            </div>
+            <div class="button">
+                <button type="submit">Send message</button>
+            </div>
+            </div>
+            
+        </form>
+    </div>
+</div>
+</div>
+
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row gy-lg-5 align-items-center">
+                <div class="col-lg-6 order-lg-1 text-center text-lg-start">
+                    <div class="title pt-3 pb-5">
+                        <h2 class="position-relative d-inline-block ms-4">About Us</h2>
+                    </div>
+                    <p class="lead text-muted">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                         Qui, impedit? Et, distinctio harum asperiores recusandae quibusdam obcaecati sunt? 
+                         Amet quo natus iure commodi accusantium quaerat 
+                         hic expedita deleniti asperiores eveniet.
+                        <P>Ph No.+41 556156</P></p>
+                </div>
+                <div class="col-lg-6 order-lg-0">
+                    <img src="https://i.pinimg.com/564x/ff/96/ee/ff96eecd5f94fc82b561ef2812c541de.jpg" alt="" class="img-fluid image-same-size">
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class = "bg-dark py-5">
+        <div class = "container">
+            <div class = "row text-white g-4">
+                <div class = "col-md-6 col-lg-3">
+                    <a class = "text-uppercase text-decoration-none brand text-white" href = "index.html">Attire</a>
+                    <p class = "text-white text-muted mt-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum mollitia quisquam veniam odit cupiditate, ullam aut voluptas velit dolor ipsam?</p>
+                </div>
+
+                <div class = "col-md-6 col-lg-3">
+                    <h5 class = "fw-light">Links</h5>
+                    <ul class = "list-unstyled">
+                        <li class = "my-3">
+                            <a href = "#" class = "text-white text-decoration-none text-muted">
+                                <i class = "fas fa-chevron-right me-1"></i> Home
+                            </a>
+                        </li>
+                        <li class = "my-3">
+                            <a href = "#" class = "text-white text-decoration-none text-muted">
+                                <i class = "fas fa-chevron-right me-1"></i> Books
+                            </a>
+                        </li>
+                        <li class = "my-3">
+                            <a href = "#" class = "text-white text-decoration-none text-muted">
+                                <i class = "fas fa-chevron-right me-1"></i> About Us
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class = "col-md-6 col-lg-3">
+                    <h5 class = "fw-light mb-3">Contact Us</h5>
+                    <div class = "d-flex justify-content-start align-items-start my-2 text-muted">
+                        <span class = "me-3">
+                            <i class = "fas fa-map-marked-alt"></i>
+                        </span>
+                        <span class = "fw-light">
+                            Albert Street, New York, AS 756, United States of America
+                        </span>
+                    </div>
+                    <div class = "d-flex justify-content-start align-items-start my-2 text-muted">
+                        <span class = "me-3">
+                            <i class = "fas fa-envelope"></i>
+                        </span>
+                        <span class = "fw-light">
+                            library.support@gmail.com
+                        </span>
+                    </div>
+                    <div class = "d-flex justify-content-start align-items-start my-2 text-muted">
+                        <span class = "me-3">
+                            <i class = "fas fa-phone-alt"></i>
+                        </span>
+                        <span class = "fw-light">
+                            +9786 6776 236
+                        </span>
+                    </div>
+                </div>
+
+                <div class = "col-md-6 col-lg-3">
+                    <h5 class = "fw-light mb-3">Follow Us</h5>
+                    <div>
+                        <ul class = "list-unstyled d-flex">
+                            <li>
+                                <a href = "#" class = "text-white text-decoration-none text-muted fs-4 me-4">
+                                    <i class = "fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href = "#" class = "text-white text-decoration-none text-muted fs-4 me-4">
+                                    <i class = "fab fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href = "#" class = "text-white text-decoration-none text-muted fs-4 me-4">
+                                    <i class = "fab fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href = "#" class = "text-white text-decoration-none text-muted fs-4 me-4">
+                                    <i class = "fab fa-pinterest"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script type="module" src="code.jquery.com_jquery-3.7.1.js"></script>
+    <script type="module" src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+    <script type="module" src="bootstrap-5.0.2-dist/js/bootstrap.min.js"></script>
+    <script type="module" src="script.js"></script>
+
+</body>
+</html>
